@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .one,
+      .two,
+      .three {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .one > p,
+      .two > p,
+      .three > p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: white;
+      }
+
+      .one {
+        background-color: red;
+        width: 100%;
+        height: 100%;
+      }
+
+      .two {
+        background-color: green;
+        width: 80%;
+        height: 80%;
+      }
+
+      .three {
+        background-color: blue;
+        width: 60%;
+        height: 60%;
+      }
+    </style>
+
+    <div class="one">
+      <p>one</p>
+      <div class="two">
+        <p>two</p>
+        <div class="three"><p>three</p></div>
+      </div>
+    </div>
+
+    <script>
+      function showClass(event) {
+        event.stopPropagation(); // need this to capture only the element event
+
+        console.log(this.classList.value);
+      }
+
+      const divs = document.querySelectorAll("div");
+
+      divs.forEach((item) => item.addEventListener("click", showClass, false));
+    </script>
+  </body>
+</html>
